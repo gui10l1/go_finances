@@ -1,7 +1,11 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 interface ContainerProps {
   size?: 'small' | 'large';
+}
+
+interface Nav {
+  urlPath: string;
 }
 
 export const Container = styled.div<ContainerProps>`
@@ -33,4 +37,23 @@ export const Container = styled.div<ContainerProps>`
       }
     }
   }
+`;
+
+export const Nav = styled.nav<Nav>`
+  a {
+    padding-bottom: 5px;
+  }
+
+  ${props =>
+    props.urlPath === '/'
+      ? css`
+          a:nth-child(1) {
+            border-bottom: 2px solid #ff872c;
+          }
+        `
+      : css`
+          a:nth-child(2) {
+            border-bottom: 2px solid #ff872c;
+          }
+        `}
 `;
